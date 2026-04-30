@@ -4,9 +4,9 @@
 
 This project explores restoring audio quality in low-bitrate MP3 files by reconstructing lost frequency information using machine learning.
 
-Importantly, this is **not audio upsampling**. Instead of increasing sample rate, the goal is to reverse compression artifacts—similar to cleaning a heavily compressed JPEG rather than increasing its resolution. :contentReference[oaicite:0]{index=0}
+This is not to be confused with audio **upsampling**. Instead of increasing sample rate, the goal is to reverse compression artifacts, similar to cleaning a heavily compressed JPEG by removing artifacts rather than increasing its resolution.
 
-Low-bitrate MP3s (e.g., 32–96 kbps) often sound muffled and distorted due to lost high-frequency detail. This project attempts to reconstruct that lost information to produce cleaner, more natural audio.
+Low-bitrate MP3s (32–96 kbps) often sound muffled and distorted due to lost high-frequency detail. This project attempts to reconstruct that lost information to produce cleaner, more natural audio.
 
 ---
 
@@ -17,7 +17,7 @@ The model is trained using a supervised learning setup with paired audio samples
 - **Clean audio** (original high-quality file)
 - **Degraded audio** (compressed to low bitrate and converted back)
 
-Rather than working with raw waveforms, the model operates on **spectrograms**, which represent audio as a 2D map of frequency vs time. This allows the model to identify missing or distorted frequency regions more effectively. :contentReference[oaicite:1]{index=1}
+Rather than working with raw waveforms, the model operates on **spectrograms**, which represent audio as a 2D map of frequency vs time. This allows the model to identify missing or distorted frequency regions more effectively.
 
 ---
 
@@ -44,7 +44,7 @@ The final model uses a **U-Net CNN architecture**:
 Input shape:
 - Frequency bins: 513  
 - Time dimension: variable  
-- Channels: 1 (grayscale) :contentReference[oaicite:2]{index=2}
+- Channels: 1 (grayscale)
 
 ---
 
@@ -75,35 +75,9 @@ The biggest issue is that the model attempts to reconstruct missing high-frequen
 
 This results in:
 - Better numerical scores
-- Worse or unnatural perceived audio quality :contentReference[oaicite:3]{index=3}
+- Worse or unnatural perceived audio quality
 
 This highlights a common problem in ML: optimizing for a metric does not always align with human perception.
-
----
-
-## What I Learned
-
-- Spectrogram-based models can capture structure in audio, but reconstruction is difficult
-- Phase information plays a critical role in perceived sound quality
-- Loss functions like MSE are not always good proxies for human perception
-- Real-world ML problems often fail in interesting and instructive ways
-
----
-
-## Future Improvements
-
-- Use perceptual loss functions (e.g., spectral convergence, log-magnitude)
-- Improve phase reconstruction (e.g., Griffin–Lim algorithm)
-- Reduce emphasis on low-frequency bands (which are less affected by compression)
-- Explore alternative architectures or hybrid approaches
-
----
-
-## Demo
-
-Example output (see repo or video):
-
-https://youtu.be/9WgnsgI6f2s?si=NpaKcVZFkEAFeF9X
 
 ---
 
