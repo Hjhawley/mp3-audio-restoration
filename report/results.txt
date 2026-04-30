@@ -1,0 +1,11 @@
+Model A:
+Trainable params: 738,561 (2.82 MB)
+loss: 0.0035 - mae: 0.0431 - val_loss: 0.0302 - val_mae: 0.1220
+
+Model B:
+Trainable params: 924,161 (3.53 MB)
+loss: 0.0021 - mae: 0.0309 - val_loss: 0.0174 - val_mae: 0.1027
+
+Model C:
+Trainable params: 1,514,753 (5.78 MB)
+loss: 0.0015 - mae: 0.0318 - val_loss: 0.0115 - val_mae: 0.1021
